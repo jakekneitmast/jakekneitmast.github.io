@@ -1,0 +1,1794 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scam Safety Training</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="/_sdk/data_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&amp;family=Open+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #1a365d;
+      --surface-color: #ffffff;
+      --text-color: #2d3748;
+      --primary-action: #38a169;
+      --secondary-action: #3182ce;
+    }
+    
+    body {
+      font-family: 'Open Sans', sans-serif;
+    }
+    
+    .font-heading {
+      font-family: 'Merriweather', serif;
+    }
+    
+    .module-card {
+      transition: all 0.3s ease;
+    }
+    
+    .module-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+    }
+    
+    .progress-ring {
+      transform: rotate(-90deg);
+    }
+    
+    .btn-speak {
+      animation: pulse-gentle 2s infinite;
+    }
+    
+    @keyframes pulse-gentle {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .fade-in {
+      animation: fadeIn 0.5s ease forwards;
+    }
+    
+    .warning-icon {
+      animation: shake 0.5s ease-in-out infinite;
+    }
+    
+    @keyframes shake {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(-5deg); }
+      75% { transform: rotate(5deg); }
+    }
+    
+    .quiz-option {
+      transition: all 0.2s ease;
+    }
+    
+    .quiz-option:hover {
+      transform: scale(1.02);
+    }
+    
+    .speaking-indicator {
+      display: inline-flex;
+      gap: 4px;
+      align-items: center;
+    }
+    
+    .speaking-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--primary-action);
+      border-radius: 50%;
+      animation: bounce 0.6s ease infinite;
+    }
+    
+    .speaking-dot:nth-child(2) { animation-delay: 0.1s; }
+    .speaking-dot:nth-child(3) { animation-delay: 0.2s; }
+    
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+ </head>
+ <body class="h-full bg-slate-800 text-gray-800 overflow-auto">
+  <div id="app" class="w-full h-full overflow-auto" style="background: var(--bg-color);"><!-- Header -->
+   <header class="sticky top-0 z-50 shadow-lg" style="background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);">
+    <div class="max-w-6xl mx-auto px-6 py-4">
+     <div class="flex items-center justify-between">
+      <div class="flex items-center gap-4">
+       <div class="w-14 h-14 rounded-full bg-white flex items-center justify-center shadow-lg">
+        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+        </svg>
+       </div>
+       <div>
+        <h1 id="main-title" class="font-heading text-2xl md:text-3xl font-bold text-white">Scam Safety Training</h1>
+        <p class="text-blue-200 text-sm md:text-base">Protecting Yourself from Fraud</p>
+       </div>
+      </div>
+      <div class="flex items-center gap-3"><button onclick="toggleTextSize()" class="p-3 rounded-full bg-white/20 hover:bg-white/30 text-white transition" title="Adjust Text Size">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+        </svg></button>
+       <div id="progress-display" class="hidden md:flex items-center gap-2 bg-white/20 rounded-full px-4 py-2"><span class="text-white text-sm font-semibold">Progress:</span> <span id="progress-text" class="text-yellow-300 font-bold">0%</span>
+       </div>
+      </div>
+     </div>
+    </div>
+   </header><!-- Main Content -->
+   <main class="max-w-6xl mx-auto px-4 md:px-6 py-8"><!-- Welcome Section -->
+    <section id="welcome-section" class="fade-in mb-8">
+     <div class="rounded-2xl p-6 md:p-8 shadow-xl" style="background: var(--surface-color);">
+      <div class="flex flex-col md:flex-row items-center gap-6">
+       <div class="w-24 h-24 md:w-32 md:h-32 rounded-full bg-gradient-to-br from-green-400 to-blue-500 flex items-center justify-center flex-shrink-0"><span class="text-5xl md:text-6xl">👋</span>
+       </div>
+       <div class="flex-1 text-center md:text-left">
+        <h2 id="welcome-heading" class="font-heading text-2xl md:text-3xl font-bold mb-3" style="color: var(--text-color);">Welcome to Your Safety Training!</h2>
+        <p id="welcome-text" class="text-lg md:text-xl leading-relaxed mb-4" style="color: var(--text-color);">This course will teach you how to recognize and avoid scams. Take your time with each section, and remember - you can listen to any content by clicking the speaker button.</p><button onclick="speakText('Welcome to your safety training! This course will teach you how to recognize and avoid scams. Take your time with each section.')" class="btn-speak inline-flex items-center gap-2 px-6 py-3 rounded-full text-white font-semibold text-lg transition hover:opacity-90" style="background: var(--primary-action);">
+         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+         </svg> Listen to Introduction </button>
+        <div id="speaking-indicator" class="hidden mt-4 items-center gap-2 text-green-600">
+         <div class="speaking-indicator">
+          <div class="speaking-dot"></div>
+          <div class="speaking-dot"></div>
+          <div class="speaking-dot"></div>
+         </div><span class="font-semibold">Speaking...</span> <button onclick="stopSpeaking()" class="ml-2 px-3 py-1 bg-red-500 text-white rounded-full text-sm hover:bg-red-600">Stop</button>
+        </div>
+       </div>
+      </div>
+     </div>
+    </section><!-- Course Modules Grid -->
+    <section id="modules-section" class="mb-8">
+     <h2 class="font-heading text-2xl md:text-3xl font-bold text-white mb-6 text-center">📚 Course Modules</h2>
+     <div id="modules-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6"><!-- Modules will be rendered here -->
+     </div>
+    </section><!-- Module Content Area (Hidden by default) -->
+    <section id="module-content" class="hidden fade-in">
+     <div class="rounded-2xl shadow-xl overflow-hidden" style="background: var(--surface-color);">
+      <div id="module-header" class="p-6 text-white" style="background: linear-gradient(135deg, #2c5282 0%, #1a365d 100%);"><button onclick="closeModule()" class="mb-4 flex items-center gap-2 text-blue-200 hover:text-white transition">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg> Back to Modules </button>
+       <h2 id="module-title" class="font-heading text-2xl md:text-3xl font-bold"></h2>
+      </div>
+      <div id="module-body" class="p-6 md:p-8"><!-- Module content will be loaded here -->
+      </div>
+     </div>
+    </section><!-- Quiz Section (Hidden by default) -->
+    <section id="quiz-section" class="hidden fade-in">
+     <div class="rounded-2xl shadow-xl overflow-hidden" style="background: var(--surface-color);">
+      <div class="p-6 text-white" style="background: linear-gradient(135deg, #38a169 0%, #2f855a 100%);"><button onclick="closeQuiz()" class="mb-4 flex items-center gap-2 text-green-200 hover:text-white transition">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg> Back to Module </button>
+       <h2 class="font-heading text-2xl md:text-3xl font-bold">📝 Knowledge Check</h2>
+      </div>
+      <div id="quiz-body" class="p-6 md:p-8"><!-- Quiz content will be loaded here -->
+      </div>
+     </div>
+    </section><!-- Certificate Section -->
+    <section id="certificate-section" class="hidden fade-in">
+     <div class="rounded-2xl shadow-xl p-8 md:p-12 text-center" style="background: linear-gradient(135deg, #faf5ff 0%, #e9d8fd 100%);">
+      <div class="max-w-2xl mx-auto">
+       <div class="w-24 h-24 mx-auto mb-6 rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center"><span class="text-5xl">🏆</span>
+       </div>
+       <h2 class="font-heading text-3xl md:text-4xl font-bold text-purple-900 mb-4">Congratulations!</h2>
+       <p class="text-xl text-purple-700 mb-6">You have completed all modules of the Scam Safety Training Course!</p>
+       <div class="bg-white rounded-xl p-6 shadow-lg mb-6">
+        <p class="text-lg text-gray-700">You are now better equipped to:</p>
+        <ul class="text-left mt-4 space-y-2">
+         <li class="flex items-center gap-2 text-gray-700"><span class="text-green-500 text-xl">✓</span> Recognize suspicious payment requests</li>
+         <li class="flex items-center gap-2 text-gray-700"><span class="text-green-500 text-xl">✓</span> Handle uncertain phone calls safely</li>
+         <li class="flex items-center gap-2 text-gray-700"><span class="text-green-500 text-xl">✓</span> Identify urgency-based scam tactics</li>
+         <li class="flex items-center gap-2 text-gray-700"><span class="text-green-500 text-xl">✓</span> Protect yourself and your loved ones</li>
+        </ul>
+       </div><button onclick="resetCourse()" class="px-8 py-4 rounded-full text-white font-bold text-lg transition hover:opacity-90" style="background: var(--secondary-action);"> Retake Course </button>
+      </div>
+     </div>
+    </section>
+   </main><!-- Chatbot Simulation Section -->
+   <section id="chatbot-section" class="hidden fade-in">
+    <div class="rounded-2xl shadow-xl overflow-hidden" style="background: var(--surface-color);">
+     <div class="p-6 text-white" style="background: linear-gradient(135deg, #d69e2e 0%, #c05621 100%);"><button onclick="closeChatbot()" class="mb-4 flex items-center gap-2 text-yellow-200 hover:text-white transition">
+       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+       </svg> Back </button>
+      <h2 class="font-heading text-2xl font-bold">🎭 Scam Simulation</h2>
+     </div>
+     <div id="chatbot-body" class="p-6 h-96 overflow-y-auto flex flex-col" style="background: linear-gradient(to bottom, #f9f7f4, var(--surface-color));"></div>
+    </div>
+   </section><!-- Footer -->
+   <footer class="mt-auto py-6 text-center text-blue-200" style="background: rgba(0,0,0,0.2);">
+    <p class="text-sm">Remember: When in doubt, don't give it out! 🛡️</p>
+    <div class="mt-4 flex items-center justify-center gap-2">
+     <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 20 20"><path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z" />
+     </svg><span id="quiz-counter" class="font-semibold">📊 Quizzes Completed: 0</span>
+    </div>
+   </footer>
+  </div>
+  <script>
+    // Configuration
+    const defaultConfig = {
+      course_title: "Scam Safety Training",
+      welcome_message: "This course will teach you how to recognize and avoid scams. Take your time with each section.",
+      primary_color: "#38a169",
+      secondary_color: "#3182ce",
+      background_color: "#1a365d",
+      surface_color: "#ffffff",
+      text_color: "#2d3748",
+      font_family: "Open Sans",
+      font_size: 18
+    };
+
+    let currentConfig = { ...defaultConfig };
+    let completedModules = new Map();
+    let currentTextSize = 1;
+    let speechSynthesis = window.speechSynthesis;
+    let currentUtterance = null;
+
+    // Module Data
+    const modules = [
+      {
+        id: "payments",
+        title: "💳 Unusual Payment Methods",
+        description: "Learn to spot suspicious payment requests",
+        icon: "💳",
+        color: "#e53e3e",
+        content: `
+          <div class="space-y-8">
+            <div class="flex items-start gap-4 p-6 rounded-xl bg-red-50 border-l-4 border-red-500">
+              <div class="text-4xl warning-icon">⚠️</div>
+              <div>
+                <h3 class="font-bold text-xl text-red-800 mb-2">Red Flag Alert!</h3>
+                <p class="text-red-700 text-lg">Scammers often request unusual payment methods because they are hard to trace and nearly impossible to reverse.</p>
+              </div>
+            </div>
+
+            <button onclick="speakText('Scammers often request unusual payment methods because they are hard to trace and nearly impossible to reverse. Be very careful if someone asks you to pay in gift cards, wire transfers, cryptocurrency, or through payment apps to strangers.')" 
+                    class="w-full md:w-auto flex items-center justify-center gap-2 px-6 py-3 rounded-full text-white font-semibold transition hover:opacity-90" style="background: var(--primary-action);">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/>
+              </svg>
+              🔊 Listen to This Section
+            </button>
+
+            <h3 class="font-heading text-2xl font-bold" style="color: var(--text-color);">🚨 Dangerous Payment Methods to Watch For:</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="p-6 rounded-xl bg-gradient-to-br from-red-100 to-red-50 border-2 border-red-200">
+                <div class="text-4xl mb-3">🎁</div>
+                <h4 class="font-bold text-xl text-red-800 mb-2">Gift Cards</h4>
+                <p class="text-red-700">NO legitimate business or government agency will EVER ask for payment in gift cards. This is always a scam!</p>
+              </div>
+              
+              <div class="p-6 rounded-xl bg-gradient-to-br from-orange-100 to-orange-50 border-2 border-orange-200">
+                <div class="text-4xl mb-3">💸</div>
+                <h4 class="font-bold text-xl text-orange-800 mb-2">Wire Transfers</h4>
+                <p class="text-orange-700">Once sent, wire transfers cannot be reversed. Scammers love this because the money disappears instantly.</p>
+              </div>
+              
+              <div class="p-6 rounded-xl bg-gradient-to-br from-purple-100 to-purple-50 border-2 border-purple-200">
+                <div class="text-4xl mb-3">₿</div>
+                <h4 class="font-bold text-xl text-purple-800 mb-2">Cryptocurrency</h4>
+                <p class="text-purple-700">Bitcoin and other cryptocurrencies are untraceable. Legitimate companies don't require crypto payments.</p>
+              </div>
+              
+              <div class="p-6 rounded-xl bg-gradient-to-br from-blue-100 to-blue-50 border-2 border-blue-200">
+                <div class="text-4xl mb-3">📱</div>
+                <h4 class="font-bold text-xl text-blue-800 mb-2">Payment Apps to Strangers</h4>
+                <p class="text-blue-700">Venmo, Zelle, and Cash App should only be used with people you know personally, never strangers.</p>
+              </div>
+            </div>
+
+            <div class="p-6 rounded-xl bg-green-50 border-2 border-green-300">
+              <h4 class="font-bold text-xl text-green-800 mb-3 flex items-center gap-2">
+                <span class="text-2xl">✅</span> Safe Payment Methods
+              </h4>
+              <ul class="space-y-3 text-green-700 text-lg">
+                <li class="flex items-start gap-3">
+                  <span class="text-xl">💳</span>
+                  <span><strong>Credit Cards:</strong> Offer fraud protection and the ability to dispute charges</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="text-xl">🏦</span>
+                  <span><strong>Checks:</strong> Create a paper trail and can be stopped if needed</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="text-xl">🔒</span>
+                  <span><strong>Secure Online Portals:</strong> Official websites of companies you trust</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="p-6 rounded-xl bg-yellow-50 border-2 border-yellow-300">
+              <h4 class="font-bold text-xl text-yellow-800 mb-3">💡 Remember This Rule:</h4>
+              <p class="text-2xl font-bold text-yellow-900 text-center py-4">"If someone asks for payment in gift cards, it's ALWAYS a scam!"</p>
+            </div>
+          </div>
+        `,
+        quiz: [
+          {
+            question: "A caller says you owe back taxes and must pay immediately with iTunes gift cards. What should you do?",
+            options: [
+              "Buy the gift cards and read the numbers to them",
+              "Hang up immediately - this is a scam",
+              "Ask for their supervisor",
+              "Give them your bank account instead"
+            ],
+            correct: 1,
+            explanation: "The IRS and other government agencies NEVER accept gift cards as payment. This is always a scam. Hang up immediately!"
+          },
+          {
+            question: "Which payment method offers the BEST fraud protection?",
+            options: [
+              "Wire transfer",
+              "Gift cards",
+              "Credit card",
+              "Cryptocurrency"
+            ],
+            correct: 2,
+            explanation: "Credit cards offer fraud protection and allow you to dispute unauthorized charges. The other options are nearly impossible to reverse."
+          }
+        ]
+      },
+      {
+        id: "phone-calls",
+        title: "📞 Suspicious Phone Calls",
+        description: "What to do when you're unsure about a call",
+        icon: "📞",
+        color: "#3182ce",
+        content: `
+          <div class="space-y-8">
+            <div class="flex items-start gap-4 p-6 rounded-xl bg-blue-50 border-l-4 border-blue-500">
+              <div class="text-4xl">📞</div>
+              <div>
+                <h3 class="font-bold text-xl text-blue-800 mb-2">When in Doubt, Check it Out!</h3>
+                <p class="text-blue-700 text-lg">If you receive a call and you're not sure if it's legitimate, you have the power to verify. Never feel pressured to make immediate decisions.</p>
+              </div>
+            </div>
+
+            <button onclick="speakText('When you receive a suspicious phone call, remember: You are in control. You can always hang up and call the company back using a number you find yourself. Never give personal information to someone who called you.')" 
+                    class="w-full md:w-auto flex items-center justify-center gap-2 px-6 py-3 rounded-full text-white font-semibold transition hover:opacity-90" style="background: var(--primary-action);">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/>
+              </svg>
+              🔊 Listen to This Section
+            </button>
+
+            <h3 class="font-heading text-2xl font-bold" style="color: var(--text-color);">📋 Step-by-Step: What to Do</h3>
+
+            <div class="space-y-4">
+              <div class="flex items-start gap-4 p-5 rounded-xl bg-gradient-to-r from-blue-100 to-blue-50">
+                <div class="w-12 h-12 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-xl flex-shrink-0">1</div>
+                <div>
+                  <h4 class="font-bold text-lg text-blue-800">Stay Calm</h4>
+                  <p class="text-blue-700">Take a deep breath. You're under no obligation to act immediately. A legitimate caller will understand if you need time.</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4 p-5 rounded-xl bg-gradient-to-r from-green-100 to-green-50">
+                <div class="w-12 h-12 rounded-full bg-green-600 text-white flex items-center justify-center font-bold text-xl flex-shrink-0">2</div>
+                <div>
+                  <h4 class="font-bold text-lg text-green-800">Don't Share Personal Information</h4>
+                  <p class="text-green-700">Never give out your Social Security number, bank details, passwords, or other sensitive information to someone who called you.</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4 p-5 rounded-xl bg-gradient-to-r from-purple-100 to-purple-50">
+                <div class="w-12 h-12 rounded-full bg-purple-600 text-white flex items-center justify-center font-bold text-xl flex-shrink-0">3</div>
+                <div>
+                  <h4 class="font-bold text-lg text-purple-800">Hang Up and Verify</h4>
+                  <p class="text-purple-700">Tell the caller you'll call them back. Look up the company's official number yourself (from a bill, card, or official website) and call that number.</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4 p-5 rounded-xl bg-gradient-to-r from-orange-100 to-orange-50">
+                <div class="w-12 h-12 rounded-full bg-orange-600 text-white flex items-center justify-center font-bold text-xl flex-shrink-0">4</div>
+                <div>
+                  <h4 class="font-bold text-lg text-orange-800">Ask a Trusted Person</h4>
+                  <p class="text-orange-700">If you're still unsure, talk to a family member, friend, or neighbor before taking any action. Two heads are better than one!</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-6 rounded-xl bg-red-50 border-2 border-red-300">
+              <h4 class="font-bold text-xl text-red-800 mb-4 flex items-center gap-2">
+                <span class="text-2xl">🚩</span> Warning Signs During a Call
+              </h4>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="flex items-start gap-3">
+                  <span class="text-2xl">😠</span>
+                  <span class="text-red-700">Caller becomes angry when questioned</span>
+                </div>
+                <div class="flex items-start gap-3">
+                  <span class="text-2xl">⏰</span>
+                  <span class="text-red-700">Extreme pressure to act immediately</span>
+                </div>
+                <div class="flex items-start gap-3">
+                  <span class="text-2xl">🤫</span>
+                  <span class="text-red-700">Asked to keep the call secret</span>
+                </div>
+                <div class="flex items-start gap-3">
+                  <span class="text-2xl">📵</span>
+                  <span class="text-red-700">Told not to hang up or call anyone</span>
+                </div>
+                <div class="flex items-start gap-3">
+                  <span class="text-2xl">👮</span>
+                  <span class="text-red-700">Threats of arrest or legal action</span>
+                </div>
+                <div class="flex items-start gap-3">
+                  <span class="text-2xl">🎁</span>
+                  <span class="text-red-700">Unusual payment method requested</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-6 rounded-xl bg-green-100 border-2 border-green-400 text-center">
+              <p class="text-2xl font-bold text-green-800">🛡️ Your Magic Words:</p>
+              <p class="text-xl text-green-700 mt-3 italic">"I'll call you back at the official number."</p>
+              <p class="text-green-600 mt-2">This simple phrase protects you from most phone scams!</p>
+            </div>
+          </div>
+        `,
+        quiz: [
+          {
+            question: "You receive a call from someone claiming to be from your bank. They ask for your account password. What should you do?",
+            options: [
+              "Give them the password since they're from your bank",
+              "Hang up and call your bank using the number on your card",
+              "Ask them to prove they're really from the bank",
+              "Give them only part of your password"
+            ],
+            correct: 1,
+            explanation: "Real banks NEVER ask for your password over the phone. Always hang up and call back using the official number on your bank card or statement."
+          },
+          {
+            question: "A caller gets angry when you say you want to verify the call. This is:",
+            options: [
+              "Normal - they're probably just busy",
+              "A sign you should apologize and cooperate",
+              "A major red flag that it's likely a scam",
+              "Proof that the call is legitimate"
+            ],
+            correct: 2,
+            explanation: "Legitimate callers will understand and encourage you to verify. Anger and pressure are major warning signs of a scam."
+          }
+        ]
+      },
+      {
+        id: "urgency",
+        title: "⏰ Urgency Scams",
+        description: "Recognizing pressure tactics scammers use",
+        icon: "⏰",
+        color: "#d69e2e",
+        content: `
+          <div class="space-y-8">
+            <div class="flex items-start gap-4 p-6 rounded-xl bg-yellow-50 border-l-4 border-yellow-500">
+              <div class="text-4xl warning-icon">⏰</div>
+              <div>
+                <h3 class="font-bold text-xl text-yellow-800 mb-2">Scammers Create Fake Emergencies!</h3>
+                <p class="text-yellow-700 text-lg">One of the most common tactics scammers use is creating a sense of urgency. They want you to act before you have time to think or ask for help.</p>
+              </div>
+            </div>
+
+            <button onclick="speakText('Scammers create fake emergencies to pressure you into quick decisions. They may threaten arrest, claim your account is at risk, or say a family member needs help urgently. Remember: Real emergencies can wait for you to verify them. Take your time and stay safe.')" 
+                    class="w-full md:w-auto flex items-center justify-center gap-2 px-6 py-3 rounded-full text-white font-semibold transition hover:opacity-90" style="background: var(--primary-action);">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/>
+              </svg>
+              🔊 Listen to This Section
+            </button>
+
+            <h3 class="font-heading text-2xl font-bold" style="color: var(--text-color);">🎭 Common Urgency Scam Scenarios</h3>
+
+            <div class="space-y-4">
+              <div class="p-6 rounded-xl bg-gradient-to-r from-red-100 to-red-50 border-l-4 border-red-500">
+                <div class="flex items-start gap-4">
+                  <div class="text-4xl">👮</div>
+                  <div>
+                    <h4 class="font-bold text-xl text-red-800 mb-2">"You're About to Be Arrested!"</h4>
+                    <p class="text-red-700 mb-2">Scammers claim to be police, IRS, or government agents and say you'll be arrested unless you pay immediately.</p>
+                    <p class="text-red-600 font-semibold">✋ TRUTH: Government agencies NEVER threaten arrest over the phone and don't accept gift cards!</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="p-6 rounded-xl bg-gradient-to-r from-orange-100 to-orange-50 border-l-4 border-orange-500">
+                <div class="flex items-start gap-4">
+                  <div class="text-4xl">👨‍👩‍👧</div>
+                  <div>
+                    <h4 class="font-bold text-xl text-orange-800 mb-2">"Your Grandchild is in Trouble!"</h4>
+                    <p class="text-orange-700 mb-2">The "Grandparent Scam" - callers pretend to be a grandchild in jail or injured, needing money immediately.</p>
+                    <p class="text-orange-600 font-semibold">✋ TRUTH: Always verify by calling your family member directly at their known number!</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="p-6 rounded-xl bg-gradient-to-r from-purple-100 to-purple-50 border-l-4 border-purple-500">
+                <div class="flex items-start gap-4">
+                  <div class="text-4xl">🏦</div>
+                  <div>
+                    <h4 class="font-bold text-xl text-purple-800 mb-2">"Your Account Will Be Closed!"</h4>
+                    <p class="text-purple-700 mb-2">Fake bank or tech support calls claiming your account is compromised and needs immediate action.</p>
+                    <p class="text-purple-600 font-semibold">✋ TRUTH: Hang up and call your bank using the number on your card!</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="p-6 rounded-xl bg-gradient-to-r from-blue-100 to-blue-50 border-l-4 border-blue-500">
+                <div class="flex items-start gap-4">
+                  <div class="text-4xl">🎁</div>
+                  <div>
+                    <h4 class="font-bold text-xl text-blue-800 mb-2">"Claim Your Prize NOW!"</h4>
+                    <p class="text-blue-700 mb-2">You've "won" a lottery or prize, but must pay fees or taxes immediately to claim it.</p>
+                    <p class="text-blue-600 font-semibold">✋ TRUTH: You can't win a contest you didn't enter! Real prizes don't require upfront payment.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-6 rounded-xl bg-green-50 border-2 border-green-400">
+              <h4 class="font-bold text-xl text-green-800 mb-4 flex items-center gap-2">
+                <span class="text-2xl">🧘</span> Your Anti-Urgency Toolkit
+              </h4>
+              <div class="space-y-4">
+                <div class="flex items-start gap-3 p-3 bg-white rounded-lg">
+                  <span class="text-2xl">🛑</span>
+                  <div>
+                    <p class="font-bold text-green-800">STOP</p>
+                    <p class="text-green-700">Pause before you act. Take a deep breath.</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3 p-3 bg-white rounded-lg">
+                  <span class="text-2xl">🤔</span>
+                  <div>
+                    <p class="font-bold text-green-800">THINK</p>
+                    <p class="text-green-700">Does this make sense? Why the rush?</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3 p-3 bg-white rounded-lg">
+                  <span class="text-2xl">📞</span>
+                  <div>
+                    <p class="font-bold text-green-800">VERIFY</p>
+                    <p class="text-green-700">Hang up and call the real number yourself.</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3 p-3 bg-white rounded-lg">
+                  <span class="text-2xl">👥</span>
+                  <div>
+                    <p class="font-bold text-green-800">ASK</p>
+                    <p class="text-green-700">Talk to someone you trust before acting.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-6 rounded-xl bg-blue-100 border-2 border-blue-400 text-center">
+              <p class="text-2xl font-bold text-blue-800">💎 Golden Rule:</p>
+              <p class="text-xl text-blue-700 mt-3">"Any legitimate matter can wait until you verify it."</p>
+              <p class="text-blue-600 mt-2">If they say it can't wait, that's your biggest clue it's a scam!</p>
+            </div>
+          </div>
+        `,
+        quiz: [
+          {
+            question: "You receive a call saying your grandson is in jail and needs bail money immediately. What should you do FIRST?",
+            options: [
+              "Send the money right away - it's an emergency!",
+              "Ask the caller for more details about where he is",
+              "Hang up and call your grandson or his parents directly",
+              "Give them your credit card number"
+            ],
+            correct: 2,
+            explanation: "Always verify emergencies by contacting your family directly using numbers you already have. Scammers prey on your love for family."
+          },
+          {
+            question: "A legitimate situation will:",
+            options: [
+              "Require immediate action without time to think",
+              "Allow you time to verify and make a careful decision",
+              "Threaten you with arrest if you don't act now",
+              "Ask you to keep it secret from family"
+            ],
+            correct: 1,
+            explanation: "Real emergencies and legitimate businesses will give you time to verify. Extreme pressure is a major red flag!"
+          }
+        ]
+      },
+      {
+        id: "passwords",
+        title: "🔐 Password Strength Building",
+        description: "Create strong passwords that stop hackers",
+        icon: "🔐",
+        color: "#805ad5",
+        content: `
+          <div class="space-y-8">
+            <div class="flex items-start gap-4 p-6 rounded-xl bg-purple-50 border-l-4 border-purple-500">
+              <div class="text-4xl">🔐</div>
+              <div>
+                <h3 class="font-bold text-xl text-purple-800 mb-2">Your Password is Your First Line of Defense!</h3>
+                <p class="text-purple-700 text-lg">A strong password is one of the best ways to protect your accounts from scammers and hackers. Let's learn how to create passwords that are hard to crack.</p>
+              </div>
+            </div>
+
+            <button onclick="speakText('Your password is your first line of defense against hackers. A strong password should be at least 12 characters long and include uppercase letters, lowercase letters, numbers, and symbols. Never use personal information like birthdays or pet names.')" 
+                    class="w-full md:w-auto flex items-center justify-center gap-2 px-6 py-3 rounded-full text-white font-semibold transition hover:opacity-90" style="background: var(--primary-action);">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/>
+              </svg>
+              🔊 Listen to This Section
+            </button>
+
+            <h3 class="font-heading text-2xl font-bold" style="color: var(--text-color);">🚫 Weak vs. Strong Passwords</h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+              <div class="p-6 rounded-xl bg-red-50 border-2 border-red-300">
+                <h4 class="font-bold text-xl text-red-800 mb-4 flex items-center gap-2">
+                  <span class="text-2xl">❌</span> Weak Passwords
+                </h4>
+                <div class="space-y-3">
+                  <div class="p-3 bg-white rounded-lg border-l-4 border-red-500">
+                    <p class="font-mono text-sm text-gray-700 break-all">password123</p>
+                    <p class="text-xs text-red-600 mt-1">Too common and predictable</p>
+                  </div>
+                  <div class="p-3 bg-white rounded-lg border-l-4 border-red-500">
+                    <p class="font-mono text-sm text-gray-700 break-all">1234567890</p>
+                    <p class="text-xs text-red-600 mt-1">Only numbers, too easy</p>
+                  </div>
+                  <div class="p-3 bg-white rounded-lg border-l-4 border-red-500">
+                    <p class="font-mono text-sm text-gray-700 break-all">Sarah1975</p>
+                    <p class="text-xs text-red-600 mt-1">Personal info - guessable</p>
+                  </div>
+                  <div class="p-3 bg-white rounded-lg border-l-4 border-red-500">
+                    <p class="font-mono text-sm text-gray-700 break-all">qwerty</p>
+                    <p class="text-xs text-red-600 mt-1">Keyboard pattern</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="p-6 rounded-xl bg-green-50 border-2 border-green-300">
+                <h4 class="font-bold text-xl text-green-800 mb-4 flex items-center gap-2">
+                  <span class="text-2xl">✅</span> Strong Passwords
+                </h4>
+                <div class="space-y-3">
+                  <div class="p-3 bg-white rounded-lg border-l-4 border-green-500">
+                    <p class="font-mono text-sm text-gray-700 break-all">K9*mPe@2vL4#sW</p>
+                    <p class="text-xs text-green-600 mt-1">Mixed characters, 14 letters</p>
+                  </div>
+                  <div class="p-3 bg-white rounded-lg border-l-4 border-green-500">
+                    <p class="font-mono text-sm text-gray-700 break-all">BlueM00n!River$23</p>
+                    <p class="text-xs text-green-600 mt-1">Random phrase + numbers/symbols</p>
+                  </div>
+                  <div class="p-3 bg-white rounded-lg border-l-4 border-green-500">
+                    <p class="font-mono text-sm text-gray-700 break-all">Tr0pic@lSunSet92#Oak</p>
+                    <p class="text-xs text-green-600 mt-1">18 characters with variety</p>
+                  </div>
+                  <div class="p-3 bg-white rounded-lg border-l-4 border-green-500">
+                    <p class="font-mono text-sm text-gray-700 break-all">F8!dK3@xP2\$jL9&vM</p>
+                    <p class="text-xs text-green-600 mt-1">Random + symbols = very secure</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <h3 class="font-heading text-2xl font-bold mb-4" style="color: var(--text-color);">✨ The 5 Rules for Strong Passwords</h3>
+
+            <div class="space-y-4">
+              <div class="flex items-start gap-4 p-5 rounded-xl bg-gradient-to-r from-blue-100 to-blue-50">
+                <div class="w-12 h-12 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-xl flex-shrink-0">1</div>
+                <div>
+                  <h4 class="font-bold text-lg text-blue-800">At Least 12 Characters (Longer is Better!)</h4>
+                  <p class="text-blue-700">The longer your password, the harder it is to crack. Aim for 16+ characters if possible.</p>
+                  <div class="mt-2 p-2 bg-white rounded text-sm text-gray-600">
+                    <span class="font-semibold">Examples:</span> 14 characters = very good | 16+ characters = excellent
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4 p-5 rounded-xl bg-gradient-to-r from-green-100 to-green-50">
+                <div class="w-12 h-12 rounded-full bg-green-600 text-white flex items-center justify-center font-bold text-xl flex-shrink-0">2</div>
+                <div>
+                  <h4 class="font-bold text-lg text-green-800">Mix UPPERCASE and lowercase Letters</h4>
+                  <p class="text-green-700">Use both capital and small letters throughout your password.</p>
+                  <div class="mt-2 p-2 bg-white rounded text-sm text-gray-600">
+                    <span class="font-semibold">Good:</span> GrEeN<span class="font-semibold">pL@y</span>SuN | <span class="font-semibold">Bad:</span> greenplaysun
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4 p-5 rounded-xl bg-gradient-to-r from-purple-100 to-purple-50">
+                <div class="w-12 h-12 rounded-full bg-purple-600 text-white flex items-center justify-center font-bold text-xl flex-shrink-0">3</div>
+                <div>
+                  <h4 class="font-bold text-lg text-purple-800">Include Numbers (Not Just at the End!)</h4>
+                  <p class="text-purple-700">Scatter numbers throughout your password, not just at the beginning or end.</p>
+                  <div class="mt-2 p-2 bg-white rounded text-sm text-gray-600">
+                    <span class="font-semibold">Good:</span> Ab3cd5Ef7gH | <span class="font-semibold">Bad:</span> abcdefgh123
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4 p-5 rounded-xl bg-gradient-to-r from-orange-100 to-orange-50">
+                <div class="w-12 h-12 rounded-full bg-orange-600 text-white flex items-center justify-center font-bold text-xl flex-shrink-0">4</div>
+                <div>
+                  <h4 class="font-bold text-lg text-orange-800">Use Special Symbols</h4>
+                  <p class="text-orange-700">Include symbols like ! @ # $ % ^ & * to make your password much stronger.</p>
+                  <div class="mt-2 p-2 bg-white rounded text-sm text-gray-600">
+                    <span class="font-semibold">Symbols to use:</span> ! @ # $ % ^ & * ( ) - + =
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4 p-5 rounded-xl bg-gradient-to-r from-pink-100 to-pink-50">
+                <div class="w-12 h-12 rounded-full bg-pink-600 text-white flex items-center justify-center font-bold text-xl flex-shrink-0">5</div>
+                <div>
+                  <h4 class="font-bold text-lg text-pink-800">Make It Random & Unique</h4>
+                  <p class="text-pink-700">Don't use words from the dictionary or personal information. Make it random!</p>
+                  <div class="mt-2 p-2 bg-white rounded text-sm text-gray-600">
+                    <span class="font-semibold">Avoid:</span> Birthdays, pet names, street addresses, anniversaries
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-8 p-6 rounded-xl bg-gradient-to-br from-yellow-100 to-yellow-50 border-2 border-yellow-300">
+              <h4 class="font-bold text-xl text-yellow-800 mb-4">🎨 Password Builder Activity</h4>
+              <p class="text-yellow-700 mb-4">Let's practice creating a strong password:</p>
+              
+              <div class="space-y-4 p-4 bg-white rounded-lg">
+                <div>
+                  <label class="block text-sm font-semibold text-gray-700 mb-2">Enter a word you like (12+ letters):</label>
+                  <input type="text" id="password-base" placeholder="e.g., BlueBirdsFlying" class="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" maxlength="30">
+                </div>
+                
+                <button onclick="generatePassword()" 
+                        class="w-full py-3 rounded-lg font-semibold text-white transition hover:opacity-90" style="background: var(--primary-action);">
+                  🎲 Build My Strong Password
+                </button>
+                
+                <div id="password-result" class="hidden p-4 bg-green-50 rounded-lg border-2 border-green-300">
+                  <p class="text-sm font-semibold text-green-800 mb-2">Your Strong Password Example:</p>
+                  <div class="flex items-center gap-2">
+                    <input type="text" id="generated-password" readonly class="flex-1 px-4 py-3 font-mono text-gray-800 bg-white border-2 border-green-400 rounded-lg">
+                    <button onclick="copyPassword()" class="px-4 py-3 bg-green-600 text-white rounded-lg font-semibold hover:bg-green-700">
+                      📋 Copy
+                    </button>
+                  </div>
+                  <p class="text-xs text-green-600 mt-2">This is an example for demonstration. For real accounts, create your own unique password!</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-6 rounded-xl bg-red-50 border-2 border-red-300">
+              <h4 class="font-bold text-xl text-red-800 mb-4 flex items-center gap-2">
+                <span class="text-2xl">🚫</span> Password Mistakes to Avoid
+              </h4>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="flex items-start gap-3 p-3 bg-white rounded-lg">
+                  <span class="text-2xl">🔄</span>
+                  <span class="text-red-700"><strong>Don't reuse passwords</strong> - Use different passwords for important accounts</span>
+                </div>
+                <div class="flex items-start gap-3 p-3 bg-white rounded-lg">
+                  <span class="text-2xl">📝</span>
+                  <span class="text-red-700"><strong>Don't write on sticky notes</strong> - Keep passwords in a secure place</span>
+                </div>
+                <div class="flex items-start gap-3 p-3 bg-white rounded-lg">
+                  <span class="text-2xl">📱</span>
+                  <span class="text-red-700"><strong>Don't share passwords</strong> - Even with family or "tech support"</span>
+                </div>
+                <div class="flex items-start gap-3 p-3 bg-white rounded-lg">
+                  <span class="text-2xl">💬</span>
+                  <span class="text-red-700"><strong>Don't tell anyone your password</strong> - No one needs to know it</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-6 rounded-xl bg-blue-100 border-2 border-blue-400 text-center">
+              <p class="text-2xl font-bold text-blue-800 mb-2">💡 Pro Tip:</p>
+              <p class="text-lg text-blue-700">Use a Password Manager! Apps like LastPass or Bitwarden remember your passwords securely so you don't have to.</p>
+            </div>
+          </div>
+        `,
+        quiz: [
+          {
+            question: "What is the MINIMUM recommended length for a strong password?",
+            options: [
+              "6 characters",
+              "8 characters",
+              "12 characters",
+              "Any length is fine"
+            ],
+            correct: 2,
+            explanation: "Strong passwords should be at least 12 characters long. Longer is even better! 16+ characters is excellent."
+          },
+          {
+            question: "Which password is the STRONGEST?",
+            options: [
+              "BlueSky2024",
+              "blue_sky_2024_mountain",
+              "Tr0pic@lSun92#Oak",
+              "password12345"
+            ],
+            correct: 2,
+            explanation: "Tr0pic@lSun92#Oak is strongest because it has uppercase, lowercase, numbers, AND special symbols scattered throughout."
+          },
+          {
+            question: "Why should you use special symbols in your password?",
+            options: [
+              "To make it look fancy",
+              "To make it much harder to crack",
+              "Because websites require them",
+              "It doesn't really matter"
+            ],
+            correct: 1,
+            explanation: "Special symbols like !, @, #, $ make passwords exponentially harder for hackers to crack through brute force attacks."
+          },
+          {
+            question: "What should you NEVER include in a password?",
+            options: [
+              "Numbers",
+              "Symbols",
+              "Uppercase letters",
+              "Your birthdate or pet name"
+            ],
+            correct: 3,
+            explanation: "Never use personal information like birthdates, pet names, or anniversaries - hackers can easily guess these!"
+          }
+        ]
+      },
+      {
+        id: "scammer-chatbot",
+        title: "🤖 Scammer Chatbot Simulation",
+        description: "Interactive practice identifying scam tactics",
+        icon: "🤖",
+        color: "#d69e2e",
+        content: `
+          <div class="space-y-8">
+            <div class="flex items-start gap-4 p-6 rounded-xl bg-orange-50 border-l-4 border-orange-500">
+              <div class="text-4xl">🎭</div>
+              <div>
+                <h3 class="font-bold text-xl text-orange-800 mb-2">Real Practice with Real Scam Tactics</h3>
+                <p class="text-orange-700 text-lg">This interactive chatbot simulates a real scammer trying common tactics. Practice recognizing red flags and responding safely!</p>
+              </div>
+            </div>
+
+            <div class="p-6 rounded-xl bg-yellow-50 border-2 border-yellow-300">
+              <h4 class="font-bold text-lg text-yellow-800 mb-3">📋 How This Works:</h4>
+              <ul class="space-y-2 text-yellow-700">
+                <li class="flex items-start gap-2"><span class="text-lg">✓</span> <span>A scammer will try to manipulate you</span></li>
+                <li class="flex items-start gap-2"><span class="text-lg">✓</span> <span>You'll choose how to respond</span></li>
+                <li class="flex items-start gap-2"><span class="text-lg">✓</span> <span>Get instant feedback on your safety choices</span></li>
+                <li class="flex items-start gap-2"><span class="text-lg">✓</span> <span>Learn what happens if you fall for the tricks</span></li>
+              </ul>
+            </div>
+
+            <button onclick="startChatbotSimulation()"
+                    class="w-full py-4 px-6 rounded-xl font-bold text-xl text-white transition hover:opacity-90"
+                    style="background: var(--primary-action);">
+              🎮 Start the Scam Simulation →
+            </button>
+
+            <div class="p-6 rounded-xl bg-blue-50 border-2 border-blue-300">
+              <h4 class="font-bold text-lg text-blue-800 mb-3">💡 Remember These Red Flags:</h4>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <div class="flex items-start gap-2 text-blue-700">
+                  <span class="text-lg">🚩</span> <span>Asks for personal information</span>
+                </div>
+                <div class="flex items-start gap-2 text-blue-700">
+                  <span class="text-lg">🚩</span> <span>Creates urgent pressure</span>
+                </div>
+                <div class="flex items-start gap-2 text-blue-700">
+                  <span class="text-lg">🚩</span> <span>Requests unusual payment</span>
+                </div>
+                <div class="flex items-start gap-2 text-blue-700">
+                  <span class="text-lg">🚩</span> <span>Threatens consequences</span>
+                </div>
+                <div class="flex items-start gap-2 text-blue-700">
+                  <span class="text-lg">🚩</span> <span>Claims to be official</span>
+                </div>
+                <div class="flex items-start gap-2 text-blue-700">
+                  <span class="text-lg">🚩</span> <span>Asks you to keep secret</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        `,
+        quiz: [
+          {
+            question: "What was the scammer's main goal in the simulation?",
+            options: [
+              "To help you with a legitimate problem",
+              "To trick you into revealing personal information or paying money",
+              "To verify your identity for security",
+              "To offer you a real job opportunity"
+            ],
+            correct: 1,
+            explanation: "Scammers always have an ulterior motive: to steal your money, information, or identity. Their goal is deception."
+          },
+          {
+            question: "Which response would have been the SAFEST choice?",
+            options: [
+              "Giving personal information immediately",
+              "Sharing your bank account number",
+              "Hanging up and verifying independently",
+              "Believing everything the caller said"
+            ],
+            correct: 2,
+            explanation: "Always verify through official channels you find yourself. Hanging up and calling back is the safest response to any suspicious contact."
+          }
+        ]
+      },
+      {
+        id: "protection",
+        title: "🛡️ Protecting Yourself",
+        description: "Daily habits to stay safe from scams",
+        icon: "🛡️",
+        color: "#38a169",
+        content: `
+          <div class="space-y-8">
+            <div class="flex items-start gap-4 p-6 rounded-xl bg-green-50 border-l-4 border-green-500">
+              <div class="text-4xl">🛡️</div>
+              <div>
+                <h3 class="font-bold text-xl text-green-800 mb-2">Prevention is the Best Protection!</h3>
+                <p class="text-green-700 text-lg">Simple daily habits can significantly reduce your risk of becoming a scam victim. Let's learn some easy steps to stay safe.</p>
+              </div>
+            </div>
+
+            <button onclick="speakText('Prevention is the best protection against scams. Use strong passwords, keep your personal information private, and always verify before you trust. When something seems too good to be true, it usually is.')" 
+                    class="w-full md:w-auto flex items-center justify-center gap-2 px-6 py-3 rounded-full text-white font-semibold transition hover:opacity-90" style="background: var(--primary-action);">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/>
+              </svg>
+              🔊 Listen to This Section
+            </button>
+
+            <h3 class="font-heading text-2xl font-bold" style="color: var(--text-color);">📋 Daily Safety Checklist</h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="p-5 rounded-xl bg-gradient-to-br from-blue-100 to-blue-50 border-2 border-blue-200">
+                <div class="text-3xl mb-3">📧</div>
+                <h4 class="font-bold text-lg text-blue-800 mb-2">Check Email Carefully</h4>
+                <ul class="text-blue-700 space-y-1 text-sm">
+                  <li>• Look for spelling errors</li>
+                  <li>• Check the sender's email address</li>
+                  <li>• Don't click suspicious links</li>
+                  <li>• When in doubt, delete it</li>
+                </ul>
+              </div>
+
+              <div class="p-5 rounded-xl bg-gradient-to-br from-green-100 to-green-50 border-2 border-green-200">
+                <div class="text-3xl mb-3">🔐</div>
+                <h4 class="font-bold text-lg text-green-800 mb-2">Use Strong Passwords</h4>
+                <ul class="text-green-700 space-y-1 text-sm">
+                  <li>• At least 12 characters long</li>
+                  <li>• Mix letters, numbers, symbols</li>
+                  <li>• Different password for each account</li>
+                  <li>• Write them down in a safe place</li>
+                </ul>
+              </div>
+
+              <div class="p-5 rounded-xl bg-gradient-to-br from-purple-100 to-purple-50 border-2 border-purple-200">
+                <div class="text-3xl mb-3">📱</div>
+                <h4 class="font-bold text-lg text-purple-800 mb-2">Screen Your Calls</h4>
+                <ul class="text-purple-700 space-y-1 text-sm">
+                  <li>• Let unknown calls go to voicemail</li>
+                  <li>• Don't trust caller ID</li>
+                  <li>• Register for Do Not Call list</li>
+                  <li>• Block spam numbers</li>
+                </ul>
+              </div>
+
+              <div class="p-5 rounded-xl bg-gradient-to-br from-orange-100 to-orange-50 border-2 border-orange-200">
+                <div class="text-3xl mb-3">📬</div>
+                <h4 class="font-bold text-lg text-orange-800 mb-2">Protect Your Mail</h4>
+                <ul class="text-orange-700 space-y-1 text-sm">
+                  <li>• Collect mail promptly</li>
+                  <li>• Shred sensitive documents</li>
+                  <li>• Use secure mailbox</li>
+                  <li>• Go paperless when possible</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="p-6 rounded-xl bg-yellow-50 border-2 border-yellow-300">
+              <h4 class="font-bold text-xl text-yellow-800 mb-4 flex items-center gap-2">
+                <span class="text-2xl">👥</span> Build Your Safety Network
+              </h4>
+              <p class="text-yellow-700 mb-4">Having trusted people you can call makes all the difference:</p>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="p-4 bg-white rounded-lg text-center">
+                  <div class="text-3xl mb-2">👨‍👩‍👧‍👦</div>
+                  <p class="font-semibold text-yellow-800">Family Member</p>
+                  <p class="text-yellow-600 text-sm">Someone you can call anytime</p>
+                </div>
+                <div class="p-4 bg-white rounded-lg text-center">
+                  <div class="text-3xl mb-2">🏡</div>
+                  <p class="font-semibold text-yellow-800">Trusted Neighbor</p>
+                  <p class="text-yellow-600 text-sm">Close by for quick advice</p>
+                </div>
+                <div class="p-4 bg-white rounded-lg text-center">
+                  <div class="text-3xl mb-2">🏦</div>
+                  <p class="font-semibold text-yellow-800">Bank Contact</p>
+                  <p class="text-yellow-600 text-sm">Direct line to your bank</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-6 rounded-xl bg-red-50 border-2 border-red-300">
+              <h4 class="font-bold text-xl text-red-800 mb-4 flex items-center gap-2">
+                <span class="text-2xl">🆘</span> If You Think You've Been Scammed
+              </h4>
+              <div class="space-y-3">
+                <div class="flex items-start gap-3">
+                  <span class="bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold flex-shrink-0">1</span>
+                  <p class="text-red-700"><strong>Don't panic</strong> - and don't be embarrassed. Scammers are professionals.</p>
+                </div>
+                <div class="flex items-start gap-3">
+                  <span class="bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold flex-shrink-0">2</span>
+                  <p class="text-red-700"><strong>Contact your bank immediately</strong> if money was taken.</p>
+                </div>
+                <div class="flex items-start gap-3">
+                  <span class="bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold flex-shrink-0">3</span>
+                  <p class="text-red-700"><strong>Report to FTC</strong> at ReportFraud.ftc.gov or call 1-877-382-4357.</p>
+                </div>
+                <div class="flex items-start gap-3">
+                  <span class="bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold flex-shrink-0">4</span>
+                  <p class="text-red-700"><strong>Tell someone you trust</strong> - a family member, friend, or advisor.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-6 rounded-xl bg-gradient-to-r from-green-400 to-blue-500 text-white text-center">
+              <p class="text-2xl font-bold mb-2">You've Got This!</p>
+              <p class="text-lg">By completing this course, you're already ahead of most scammers. Stay vigilant, trust your instincts, and remember - it's always okay to say no!</p>
+            </div>
+          </div>
+        `,
+        quiz: [
+          {
+            question: "If you realize you may have given information to a scammer, you should:",
+            options: [
+              "Wait and see if anything bad happens",
+              "Feel too embarrassed to tell anyone",
+              "Contact your bank immediately and tell a trusted person",
+              "Try to contact the scammer to get your money back"
+            ],
+            correct: 2,
+            explanation: "Act quickly! Contact your bank, report the scam, and tell someone you trust. Quick action can often prevent or minimize losses."
+          },
+          {
+            question: "Which is the BEST habit for staying safe from scams?",
+            options: [
+              "Answer every phone call immediately",
+              "Click on links in emails to see what they are",
+              "Verify requests independently before acting",
+              "Share your passwords with family"
+            ],
+            correct: 2,
+            explanation: "Always verify! Take time to confirm requests through official channels you find yourself. This simple habit stops most scams."
+          }
+        ]
+      }
+    ];
+
+    // Data SDK Handler
+    const dataHandler = {
+      onDataChanged(data) {
+        completedModules.clear();
+        data.forEach(record => {
+          completedModules.set(record.module_id, {
+            completed: record.completed,
+            quiz_score: record.quiz_score,
+            __backendId: record.__backendId
+          });
+        });
+        renderModules();
+        updateProgress();
+      }
+    };
+
+    // Initialize SDKs
+    async function initApp() {
+      // Initialize Element SDK
+      if (window.elementSdk) {
+        window.elementSdk.init({
+          defaultConfig,
+          onConfigChange: async (config) => {
+            currentConfig = { ...defaultConfig, ...config };
+            applyConfig();
+          },
+          mapToCapabilities: (config) => ({
+            recolorables: [
+              {
+                get: () => config.background_color || defaultConfig.background_color,
+                set: (value) => window.elementSdk.setConfig({ background_color: value })
+              },
+              {
+                get: () => config.surface_color || defaultConfig.surface_color,
+                set: (value) => window.elementSdk.setConfig({ surface_color: value })
+              },
+              {
+                get: () => config.text_color || defaultConfig.text_color,
+                set: (value) => window.elementSdk.setConfig({ text_color: value })
+              },
+              {
+                get: () => config.primary_color || defaultConfig.primary_color,
+                set: (value) => window.elementSdk.setConfig({ primary_color: value })
+              },
+              {
+                get: () => config.secondary_color || defaultConfig.secondary_color,
+                set: (value) => window.elementSdk.setConfig({ secondary_color: value })
+              }
+            ],
+            borderables: [],
+            fontEditable: {
+              get: () => config.font_family || defaultConfig.font_family,
+              set: (value) => window.elementSdk.setConfig({ font_family: value })
+            },
+            fontSizeable: {
+              get: () => config.font_size || defaultConfig.font_size,
+              set: (value) => window.elementSdk.setConfig({ font_size: value })
+            }
+          }),
+          mapToEditPanelValues: (config) => new Map([
+            ["course_title", config.course_title || defaultConfig.course_title],
+            ["welcome_message", config.welcome_message || defaultConfig.welcome_message]
+          ])
+        });
+      }
+
+      // Initialize Data SDK
+      if (window.dataSdk) {
+        const result = await window.dataSdk.init(dataHandler);
+        if (!result.isOk) {
+          console.error("Failed to initialize Data SDK");
+        }
+      }
+
+      renderModules();
+      applyConfig();
+    }
+
+    function applyConfig() {
+      const root = document.documentElement;
+      root.style.setProperty('--bg-color', currentConfig.background_color);
+      root.style.setProperty('--surface-color', currentConfig.surface_color);
+      root.style.setProperty('--text-color', currentConfig.text_color);
+      root.style.setProperty('--primary-action', currentConfig.primary_color);
+      root.style.setProperty('--secondary-action', currentConfig.secondary_color);
+
+      const fontStack = `${currentConfig.font_family}, 'Open Sans', sans-serif`;
+      document.body.style.fontFamily = fontStack;
+
+      const baseSize = currentConfig.font_size || 18;
+      document.body.style.fontSize = `${baseSize}px`;
+
+      const title = document.getElementById('main-title');
+      if (title) title.textContent = currentConfig.course_title;
+
+      const welcomeText = document.getElementById('welcome-text');
+      if (welcomeText) welcomeText.textContent = currentConfig.welcome_message;
+    }
+
+    function renderModules() {
+      const grid = document.getElementById('modules-grid');
+      if (!grid) return;
+
+      grid.innerHTML = modules.map((module, index) => {
+        const progress = completedModules.get(module.id);
+        const isCompleted = progress?.completed || false;
+        const score = progress?.quiz_score;
+
+        return `
+          <div class="module-card rounded-2xl shadow-lg overflow-hidden cursor-pointer" 
+               onclick="openModule('${module.id}')"
+               style="background: var(--surface-color); animation-delay: ${index * 0.1}s;">
+            <div class="p-6">
+              <div class="flex items-start justify-between mb-4">
+                <div class="w-16 h-16 rounded-2xl flex items-center justify-center text-3xl" style="background: ${module.color}20;">
+                  ${module.icon}
+                </div>
+                ${isCompleted ? `
+                  <div class="flex items-center gap-2 px-3 py-1 rounded-full bg-green-100 text-green-700">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                    </svg>
+                    <span class="font-semibold">Complete</span>
+                  </div>
+                ` : `
+                  <div class="px-3 py-1 rounded-full bg-gray-100 text-gray-600">
+                    <span class="font-semibold">Not Started</span>
+                  </div>
+                `}
+              </div>
+              <h3 class="font-heading text-xl font-bold mb-2" style="color: var(--text-color);">${module.title}</h3>
+              <p class="text-gray-600 mb-4">${module.description}</p>
+              ${score !== undefined ? `
+                <div class="flex items-center gap-2 text-sm text-gray-500">
+                  <span>Quiz Score:</span>
+                  <span class="font-bold" style="color: ${score >= 50 ? 'var(--primary-action)' : '#e53e3e'};">${score}%</span>
+                </div>
+              ` : ''}
+              <button class="mt-4 w-full py-3 rounded-xl font-semibold text-white transition hover:opacity-90"
+                      style="background: ${module.color};">
+                ${isCompleted ? 'Review Module' : 'Start Module'} →
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function updateProgress() {
+      const completedCount = Array.from(completedModules.values()).filter(m => m.completed).length;
+      const percentage = Math.round((completedCount / modules.length) * 100);
+      
+      const progressText = document.getElementById('progress-text');
+      if (progressText) progressText.textContent = `${percentage}%`;
+
+      if (percentage === 100) {
+        document.getElementById('modules-section').classList.add('hidden');
+        document.getElementById('certificate-section').classList.remove('hidden');
+      }
+    }
+
+    function openModule(moduleId) {
+      const module = modules.find(m => m.id === moduleId);
+      if (!module) return;
+
+      document.getElementById('welcome-section').classList.add('hidden');
+      document.getElementById('modules-section').classList.add('hidden');
+      document.getElementById('module-content').classList.remove('hidden');
+      document.getElementById('module-content').dataset.moduleId = moduleId;
+
+      document.getElementById('module-title').textContent = module.title;
+      document.getElementById('module-body').innerHTML = `
+        ${module.content}
+        <div class="mt-8 pt-6 border-t-2 border-gray-200">
+          <button onclick="startQuiz('${moduleId}')" 
+                  class="w-full py-4 rounded-xl font-bold text-lg text-white transition hover:opacity-90"
+                  style="background: var(--primary-action);">
+            📝 Take the Quiz to Complete This Module
+          </button>
+        </div>
+      `;
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function closeModule() {
+      document.getElementById('module-content').classList.add('hidden');
+      document.getElementById('welcome-section').classList.remove('hidden');
+      document.getElementById('modules-section').classList.remove('hidden');
+      stopSpeaking();
+    }
+
+    let currentQuiz = null;
+    let currentQuestionIndex = 0;
+    let quizScore = 0;
+
+    function startQuiz(moduleId) {
+      const module = modules.find(m => m.id === moduleId);
+      if (!module || !module.quiz) return;
+
+      currentQuiz = { moduleId, questions: module.quiz };
+      currentQuestionIndex = 0;
+      quizScore = 0;
+
+      document.getElementById('module-content').classList.add('hidden');
+      document.getElementById('quiz-section').classList.remove('hidden');
+      
+      renderQuizQuestion();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function renderQuizQuestion() {
+      const quiz = currentQuiz;
+      if (!quiz) return;
+
+      const question = quiz.questions[currentQuestionIndex];
+      const quizBody = document.getElementById('quiz-body');
+
+      quizBody.innerHTML = `
+        <div class="mb-6">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-sm font-semibold text-gray-500">Question ${currentQuestionIndex + 1} of ${quiz.questions.length}</span>
+            <div class="flex gap-1">
+              ${quiz.questions.map((_, i) => `
+                <div class="w-8 h-2 rounded-full ${i < currentQuestionIndex ? 'bg-green-500' : i === currentQuestionIndex ? 'bg-blue-500' : 'bg-gray-200'}"></div>
+              `).join('')}
+            </div>
+          </div>
+          <h3 class="font-heading text-xl md:text-2xl font-bold mb-6" style="color: var(--text-color);">${question.question}</h3>
+          <button onclick="speakText('${question.question.replace(/'/g, "\\'")}')" 
+                  class="mb-6 flex items-center gap-2 px-4 py-2 rounded-full text-white font-semibold transition hover:opacity-90" style="background: var(--secondary-action);">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/>
+            </svg>
+            Listen
+          </button>
+        </div>
+        <div class="space-y-4" id="quiz-options">
+          ${question.options.map((option, i) => `
+            <button onclick="selectAnswer(${i})" 
+                    class="quiz-option w-full p-5 rounded-xl text-left font-semibold border-2 border-gray-200 hover:border-blue-400 hover:bg-blue-50 transition"
+                    style="color: var(--text-color);">
+              <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-gray-100 text-gray-600 mr-3 font-bold">${String.fromCharCode(65 + i)}</span>
+              ${option}
+            </button>
+          `).join('')}
+        </div>
+      `;
+    }
+
+    function selectAnswer(selectedIndex) {
+      const question = currentQuiz.questions[currentQuestionIndex];
+      const isCorrect = selectedIndex === question.correct;
+      
+      if (isCorrect) quizScore++;
+
+      const options = document.querySelectorAll('#quiz-options button');
+      options.forEach((btn, i) => {
+        btn.disabled = true;
+        btn.classList.remove('hover:border-blue-400', 'hover:bg-blue-50');
+        
+        if (i === question.correct) {
+          btn.classList.add('border-green-500', 'bg-green-50');
+          btn.innerHTML = `<span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-green-500 text-white mr-3">✓</span>${question.options[i]}`;
+        } else if (i === selectedIndex && !isCorrect) {
+          btn.classList.add('border-red-500', 'bg-red-50');
+          btn.innerHTML = `<span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-red-500 text-white mr-3">✗</span>${question.options[i]}`;
+        }
+      });
+
+      const quizBody = document.getElementById('quiz-body');
+      const feedbackHTML = `
+        <div class="mt-6 p-5 rounded-xl ${isCorrect ? 'bg-green-50 border-2 border-green-300' : 'bg-yellow-50 border-2 border-yellow-300'}">
+          <p class="font-bold text-lg ${isCorrect ? 'text-green-800' : 'text-yellow-800'} mb-2">
+            ${isCorrect ? '🎉 Correct!' : '📚 Learning Opportunity'}
+          </p>
+          <p class="${isCorrect ? 'text-green-700' : 'text-yellow-700'}">${question.explanation}</p>
+        </div>
+        <button onclick="nextQuestion()" 
+                class="mt-6 w-full py-4 rounded-xl font-bold text-lg text-white transition hover:opacity-90"
+                style="background: var(--primary-action);">
+          ${currentQuestionIndex < currentQuiz.questions.length - 1 ? 'Next Question →' : 'See Results'}
+        </button>
+      `;
+      
+      quizBody.insertAdjacentHTML('beforeend', feedbackHTML);
+    }
+
+    async function nextQuestion() {
+      currentQuestionIndex++;
+      
+      if (currentQuestionIndex >= currentQuiz.questions.length) {
+        await completeModule();
+      } else {
+        renderQuizQuestion();
+      }
+    }
+
+    async function completeModule() {
+      const scorePercentage = Math.round((quizScore / currentQuiz.questions.length) * 100);
+      const moduleId = currentQuiz.moduleId;
+
+      // Save progress
+      if (window.dataSdk) {
+        const existing = completedModules.get(moduleId);
+        
+        if (existing && existing.__backendId) {
+          await window.dataSdk.update({
+            __backendId: existing.__backendId,
+            module_id: moduleId,
+            completed: true,
+            quiz_score: scorePercentage,
+            completed_at: new Date().toISOString()
+          });
+        } else {
+          if (completedModules.size < 999) {
+            await window.dataSdk.create({
+              module_id: moduleId,
+              completed: true,
+              quiz_score: scorePercentage,
+              completed_at: new Date().toISOString()
+            });
+          }
+        }
+      }
+
+      updateQuizCounter();
+
+      const quizBody = document.getElementById('quiz-body');
+      quizBody.innerHTML = `
+        <div class="text-center py-8">
+          <div class="w-24 h-24 mx-auto mb-6 rounded-full flex items-center justify-center ${scorePercentage >= 50 ? 'bg-green-100' : 'bg-yellow-100'}">
+            <span class="text-5xl">${scorePercentage >= 50 ? '🎉' : '📚'}</span>
+          </div>
+          <h3 class="font-heading text-2xl font-bold mb-4" style="color: var(--text-color);">
+            ${scorePercentage >= 50 ? 'Great Job!' : 'Keep Learning!'}
+          </h3>
+          <p class="text-xl mb-2">You scored:</p>
+          <p class="text-5xl font-bold mb-6" style="color: ${scorePercentage >= 50 ? 'var(--primary-action)' : '#d69e2e'};">${scorePercentage}%</p>
+          <p class="text-gray-600 mb-8">${quizScore} out of ${currentQuiz.questions.length} questions correct</p>
+          <div class="flex flex-col md:flex-row gap-4 justify-center">
+            <button onclick="closeQuiz()" 
+                    class="px-8 py-4 rounded-xl font-bold text-white transition hover:opacity-90"
+                    style="background: var(--primary-action);">
+              Back to Modules
+            </button>
+            ${scorePercentage < 100 ? `
+              <button onclick="retakeQuiz()" 
+                      class="px-8 py-4 rounded-xl font-bold text-white transition hover:opacity-90"
+                      style="background: var(--secondary-action);">
+                Retake Quiz
+              </button>
+            ` : ''}
+          </div>
+        </div>
+      `;
+    }
+
+    function closeQuiz() {
+      document.getElementById('quiz-section').classList.add('hidden');
+      document.getElementById('welcome-section').classList.remove('hidden');
+      document.getElementById('modules-section').classList.remove('hidden');
+      currentQuiz = null;
+      stopSpeaking();
+    }
+
+    function retakeQuiz() {
+      if (currentQuiz) {
+        startQuiz(currentQuiz.moduleId);
+      }
+    }
+
+    async function resetCourse() {
+      // Delete all progress records
+      if (window.dataSdk) {
+        const records = Array.from(completedModules.entries());
+        for (const [moduleId, data] of records) {
+          if (data.__backendId) {
+            await window.dataSdk.delete({
+              __backendId: data.__backendId,
+              module_id: moduleId,
+              completed: data.completed,
+              quiz_score: data.quiz_score
+            });
+          }
+        }
+      }
+
+      completedModules.clear();
+      document.getElementById('certificate-section').classList.add('hidden');
+      document.getElementById('welcome-section').classList.remove('hidden');
+      document.getElementById('modules-section').classList.remove('hidden');
+      renderModules();
+      updateProgress();
+    }
+
+    // Text-to-Speech Functions
+    function speakText(text) {
+      if (!speechSynthesis) {
+        console.error('Speech synthesis not supported');
+        return;
+      }
+
+      stopSpeaking();
+
+      currentUtterance = new SpeechSynthesisUtterance(text);
+      currentUtterance.rate = 0.9;
+      currentUtterance.pitch = 1;
+      currentUtterance.volume = 1;
+
+      // Show speaking indicator
+      const indicator = document.getElementById('speaking-indicator');
+      if (indicator) indicator.classList.remove('hidden');
+      if (indicator) indicator.classList.add('flex');
+
+      currentUtterance.onend = () => {
+        if (indicator) indicator.classList.add('hidden');
+        if (indicator) indicator.classList.remove('flex');
+      };
+
+      currentUtterance.onerror = () => {
+        if (indicator) indicator.classList.add('hidden');
+        if (indicator) indicator.classList.remove('flex');
+      };
+
+      speechSynthesis.speak(currentUtterance);
+    }
+
+    function stopSpeaking() {
+      if (speechSynthesis) {
+        speechSynthesis.cancel();
+      }
+      const indicator = document.getElementById('speaking-indicator');
+      if (indicator) {
+        indicator.classList.add('hidden');
+        indicator.classList.remove('flex');
+      }
+    }
+
+    // Text Size Toggle
+    function toggleTextSize() {
+      currentTextSize = currentTextSize === 1 ? 1.2 : currentTextSize === 1.2 ? 1.4 : 1;
+      document.body.style.fontSize = `${(currentConfig.font_size || 18) * currentTextSize}px`;
+    }
+
+    // Chatbot Simulation Scenarios
+    const chatbotScenarios = [
+      {
+        name: "IRS Threat Scam",
+        scammer: "Hello, this is the IRS calling about your unpaid taxes.",
+        responses: [
+          {
+            text: "Tell them you'll call the IRS back at the official number",
+            safe: true,
+            feedback: "   EXCELLENT! You recognized this was likely a scam and used the verification method. The IRS never calls first!"
+          },
+          {
+            text: "Ask them to explain the debt",
+            safe: false,
+            feedback: "   RISKY! Scammers are trained to convince you. The safest move is to hang up and verify independently."
+          },
+          {
+            text: "Give them your Social Security number to verify",
+            safe: false,
+            feedback: "   DANGER! Real IRS agents never ask for SSN over the phone. You've put yourself at risk!"
+          },
+          {
+            text: "Ask about payment options",
+            safe: false,
+            feedback: "   DANGER! By discussing payment, you're playing into their trap. Hang up immediately!"
+          }
+        ]
+      },
+      {
+        name: "Tech Support Scam",
+        scammer: "Hi, Microsoft here. Your computer has serious security problems. We need remote access to fix it.",
+        responses: [
+          {
+            text: "Hang up immediately - Microsoft doesn't call",
+            safe: true,
+            feedback: "PERFECT! Microsoft NEVER calls unsolicited. You correctly identified this as a scam!"
+          },
+          {
+            text: "Ask them to prove they're from Microsoft",
+            safe: false,
+            feedback: "RISKY! Scammers have answers ready. Just hang up and verify."
+          },
+          {
+            text: "Give them remote access to your computer",
+            safe: false,
+            feedback: "DANGER! They can install malware, steal passwords, and access all your files!"
+          },
+          {
+            text: "Agree to purchase their antivirus software",
+            safe: false,
+            feedback: "DANGER! You're paying for fake software and giving them your credit card info!"
+          }
+        ]
+      },
+      {
+        name: "Grandparent Scam",
+        scammer: "Hi Grandma, it's your grandson. I'm in terrible trouble and need money right now. Don't tell anyone!",
+        responses: [
+          {
+            text: "Call your grandson directly at his known number",
+            safe: true,
+            feedback: "PERFECT! Verifying with family directly is the BEST defense against this scam!"
+          },
+          {
+            text: "Ask him questions only he would know",
+            safe: false,
+            feedback: "RISKY! Scammers do research. Better to just call back directly at your known number."
+          },
+          {
+            text: "Send money via wire transfer immediately",
+            safe: false,
+            feedback: "DANGER! Wire transfers can't be reversed. You've sent money to a criminal!"
+          },
+          {
+            text: "Buy gift cards and read the codes over the phone",
+            safe: false,
+            feedback: "DANGER! This is the classic scammer payment - untraceable and irreversible!"
+          }
+        ]
+      }
+    ];
+
+    let currentChatbotScenario = null;
+    let chatbotResponseGiven = false;
+
+    function startChatbotSimulation() {
+      const moduleContent = document.getElementById('module-content');
+      if (moduleContent) moduleContent.classList.add('hidden');
+      
+      document.getElementById('chatbot-section').classList.remove('hidden');
+      
+      currentChatbotScenario = chatbotScenarios[Math.floor(Math.random() * chatbotScenarios.length)];
+      chatbotResponseGiven = false;
+      
+      renderChatbotConversation();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function renderChatbotConversation() {
+      const body = document.getElementById('chatbot-body');
+      body.innerHTML = '';
+
+      const scenarioTitle = document.createElement('div');
+      scenarioTitle.className = 'text-center mb-6 p-4 rounded-lg bg-orange-100';
+      scenarioTitle.innerHTML = `<p class="font-bold text-lg" style="color: var(--text-color);">Scenario: ${currentChatbotScenario.name}</p>`;
+      body.appendChild(scenarioTitle);
+
+      const scammerMsg = document.createElement('div');
+      scammerMsg.className = 'mb-6 flex justify-start';
+      scammerMsg.innerHTML = `
+        <div class="max-w-xs bg-gray-200 rounded-2xl rounded-bl-none p-4 shadow-md">
+          <p class="font-bold text-gray-800 text-sm mb-1">Scammer</p>
+          <p class="text-gray-800 leading-relaxed">"${currentChatbotScenario.scammer}"</p>
+        </div>
+      `;
+      body.appendChild(scammerMsg);
+
+      const optionsContainer = document.createElement('div');
+      optionsContainer.className = 'mt-8 space-y-3';
+      
+      const optionsTitle = document.createElement('p');
+      optionsTitle.className = 'font-bold text-lg mb-4';
+      optionsTitle.style.color = 'var(--text-color)';
+      optionsTitle.textContent = 'How do you respond?';
+      optionsContainer.appendChild(optionsTitle);
+
+      currentChatbotScenario.responses.forEach((response, index) => {
+        const btn = document.createElement('button');
+        btn.className = 'w-full p-4 rounded-xl text-left font-semibold border-2 border-gray-300 hover:border-blue-400 hover:bg-blue-50 transition disabled:opacity-50';
+        btn.style.color = 'var(--text-color)';
+        btn.onclick = () => handleChatbotResponse(response);
+        btn.disabled = chatbotResponseGiven;
+        btn.innerHTML = `
+          <div class="flex items-start gap-3">
+            <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-gray-300 text-gray-700 font-bold text-sm flex-shrink-0">${index + 1}</span>
+            <span>${response.text}</span>
+          </div>
+        `;
+        optionsContainer.appendChild(btn);
+      });
+
+      body.appendChild(optionsContainer);
+    }
+
+    function handleChatbotResponse(response) {
+      if (chatbotResponseGiven) return;
+      chatbotResponseGiven = true;
+
+      const body = document.getElementById('chatbot-body');
+      
+      const userMsg = document.createElement('div');
+      userMsg.className = 'mt-6 flex justify-end';
+      userMsg.innerHTML = `
+        <div class="max-w-xs bg-blue-500 rounded-2xl rounded-br-none p-4 shadow-md">
+          <p class="font-bold text-white text-sm mb-1">You</p>
+          <p class="text-white leading-relaxed">"${response.text}"</p>
+        </div>
+      `;
+      body.appendChild(userMsg);
+
+      setTimeout(() => {
+        const feedbackDiv = document.createElement('div');
+        feedbackDiv.className = `mt-6 p-5 rounded-xl ${response.safe ? 'bg-green-50 border-2 border-green-400' : 'bg-red-50 border-2 border-red-400'}`;
+        feedbackDiv.innerHTML = `
+          <p class="font-bold text-lg ${response.safe ? 'text-green-800' : 'text-red-800'} mb-2">${response.feedback.substring(0, 2)}</p>
+          <p class="${response.safe ? 'text-green-700' : 'text-red-700'}">${response.feedback.substring(3)}</p>
+        `;
+        body.appendChild(feedbackDiv);
+
+        setTimeout(() => {
+          const continueBtn = document.createElement('button');
+          continueBtn.className = 'mt-6 w-full py-3 rounded-xl font-bold text-white transition hover:opacity-90';
+          continueBtn.style.background = 'var(--secondary-action)';
+          continueBtn.textContent = 'Try Another Scenario';
+          continueBtn.onclick = () => {
+            renderChatbotConversation();
+            chatbotResponseGiven = false;
+            body.scrollTop = 0;
+          };
+          body.appendChild(continueBtn);
+
+          const completeBtn = document.createElement('button');
+          completeBtn.className = 'mt-3 w-full py-3 rounded-xl font-bold text-white transition hover:opacity-90';
+          completeBtn.style.background = 'var(--primary-action)';
+          completeBtn.textContent = 'Continue to Quiz';
+          completeBtn.onclick = () => closeChatbot();
+          body.appendChild(completeBtn);
+        }, 300);
+
+        body.scrollTop = body.scrollHeight;
+      }, 500);
+    }
+
+    function closeChatbot() {
+      document.getElementById('chatbot-section').classList.add('hidden');
+      document.getElementById('module-content').classList.remove('hidden');
+      setTimeout(() => startQuiz('scammer-chatbot'), 200);
+    }
+
+    // Password Builder Functions
+    function generatePassword() {
+      const baseInput = document.getElementById('password-base');
+      const baseWord = baseInput.value.trim();
+
+      if (!baseWord || baseWord.length < 6) {
+        alert('Please enter a word with at least 6 letters');
+        return;
+      }
+
+      // Mix case randomly
+      let mixed = '';
+      for (let i = 0; i < baseWord.length; i++) {
+        mixed += Math.random() > 0.5 ? baseWord[i].toUpperCase() : baseWord[i].toLowerCase();
+      }
+
+      // Random numbers and symbols
+      const symbols = ['!', '@', '#', '$', '%', '^', '&', '*'];
+      let password = mixed;
+
+      // Add 2-3 random numbers
+      for (let i = 0; i < 2; i++) {
+        const pos = Math.floor(Math.random() * password.length);
+        password = password.slice(0, pos) + Math.floor(Math.random() * 10) + password.slice(pos);
+      }
+
+      // Add 1-2 random symbols
+      for (let i = 0; i < 1; i++) {
+        const pos = Math.floor(Math.random() * password.length);
+        const symbol = symbols[Math.floor(Math.random() * symbols.length)];
+        password = password.slice(0, pos) + symbol + password.slice(pos);
+      }
+
+      // Ensure minimum length of 12
+      while (password.length < 12) {
+        const symbol = symbols[Math.floor(Math.random() * symbols.length)];
+        password += Math.floor(Math.random() * 10) + symbol;
+      }
+
+      document.getElementById('generated-password').value = password;
+      document.getElementById('password-result').classList.remove('hidden');
+
+      speakText(`Your strong password example is: ${password.split('').join(' ')}. Remember, for real accounts, create your own unique password!`);
+    }
+
+    function copyPassword() {
+      const passwordField = document.getElementById('generated-password');
+      passwordField.select();
+      document.execCommand('copy');
+      
+      // Show confirmation
+      const btn = event.target;
+      const originalText = btn.textContent;
+      btn.textContent = '✓ Copied!';
+      btn.classList.add('bg-green-700');
+      
+      setTimeout(() => {
+        btn.textContent = originalText;
+        btn.classList.remove('bg-green-700');
+      }, 2000);
+    }
+
+    function updateQuizCounter() {
+      const completedCount = Array.from(completedModules.values()).filter(m => m.completed).length;
+      const counterEl = document.getElementById('quiz-counter');
+      if (counterEl) {
+        counterEl.textContent = `📊 Quizzes Completed: ${completedCount}`;
+      }
+    }
+
+    // Initialize on load
+    initApp();
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d083ceff12dc35a',t:'MTc3MTUzMDA0OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
