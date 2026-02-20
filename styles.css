@@ -1,0 +1,94 @@
+:root {
+  --bg-color: #1a365d;
+  --surface-color: #ffffff;
+  --text-color: #2d3748;
+  --primary-action: #38a169;
+  --secondary-action: #3182ce;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  box-sizing: border-box;
+}
+
+.font-heading {
+  font-family: 'Merriweather', serif;
+}
+
+.module-card {
+  transition: all 0.3s ease;
+}
+
+.module-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+}
+
+.progress-ring {
+  transform: rotate(-90deg);
+}
+
+.btn-speak {
+  animation: pulse-gentle 2s infinite;
+}
+
+@keyframes pulse-gentle {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+.warning-icon {
+  animation: shake 0.5s ease-in-out infinite;
+}
+
+@keyframes shake {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-5deg); }
+  75% { transform: rotate(5deg); }
+}
+
+.quiz-option {
+  transition: all 0.2s ease;
+}
+
+.quiz-option:hover {
+  transform: scale(1.02);
+}
+
+.speaking-indicator {
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.speaking-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--primary-action);
+  border-radius: 50%;
+  animation: bounce 0.6s ease infinite;
+}
+
+.speaking-dot:nth-child(2) { animation-delay: 0.1s; }
+.speaking-dot:nth-child(3) { animation-delay: 0.2s; }
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+/* You can later move repeated inline styles (like header gradients) here too */
+header {
+  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+}
+
+/* Add more extracted inline styles as needed */
